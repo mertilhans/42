@@ -1,0 +1,28 @@
+Bir sınava giriş yapma ve sınavı ayarlama
+1-Giriş ekranında sınav/sınav ile giriş yapın
+2-Bir terminal açın ve komut isteminden sonra kinit kullanıcı adı ve şifrenizi yazın
+3-Başlamak için bir terminalde examshell yazın
+
+Sınav sırasında
+1-Göndermeden önce test kodlarınızı ve kütüphanelerinizi temizlemeyi, yorumlamayı ve kaldırmayı unutmayın
+2-Samshell terminalinde grademe ve y yazmadan önce rendu/ dizinindeki kodunuzu düzenli olarak vogsphere'e itmeyi unutmayın
+3-Son teslimden önce tüm konuları ve örnekleri tekrar okuyun
+
+Sınavlardan Önce
+1- Sınavdan önce Fonksiyonları Döngüleri Koşul Dizilerini Dizeleri Öğrenmelisiniz 00
+2- Sınav01/sınav02'den önce argc & argv & malloc ve free öğrenmelisiniz
+3- Final Sınavından Önce Makefile Kütüphanesi Header Pointers-Functions'ı Öğrenmelisiniz
+Herhangi bir sınavı geçerli kılmak için 25 puana ihtiyacınız var
+100'e ihtiyaç duyduğu acele ve bsq ile C09 ve C10 hariç günleri doğrulamak için 50 puana ihtiyacınız var
+
+Piscine ipuçları
+1. Hafta Shell00, Shell01, C00, C01
+-Shell01 projesinde zamanınızı boşa harcamayın, C dilini öğrenmeli ve C00 ve C01 üzerinde çalışmalısınız, çünkü sınav c dili üzerinedir.
+-Shell01'i hafta sonu doğrulayın ve bu acele üzerinde çalışın çünkü çok kolay.
+
+2. Hafta: C02, C03, C04, C06
+-C06'yı C05'ten önce doğrulamak daha iyidir, çünkü sınav01 argc ve argv üzerinedir.
+-Zamanınızı acele01 ile harcamayın, günlerinizde çalışmak ve hafta sonları sınava hazırlanmak ve önceki sınavlarda yaptığınız hataları bilmek daha iyidir.
+
+3. Hafta: C05, C07, C08, C09
+-kod becerilerinizi ve algoritmanızı geliştirmeye çalışın
