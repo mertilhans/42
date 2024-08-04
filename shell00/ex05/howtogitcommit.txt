@@ -1,0 +1,21 @@
+Burada yapmamız istenen commitlerimizin son 5 satırını göstericek bir komut
+
+Bu komut = git log --format='%H' -n5
+Şimdi açıklayalım ;
+Git Log = git  deposundaki commit geçmişini görüntülemek için kullanılır.
+
+--format = git Log komutunun çıktısını özelleştirmek için kullanırız '%H' formatı,her commit in tam SHA-1 has değerini gösterir.
+
+-n5 = en son 5 commit in listeleyeceğini belirtir -n veya '--max-count' seçeneği ile kullanabilir ve bu seçenekten sonra belirtilen sayı kadar commit görüntülenebilir. N = Number
+
+Ayrıca yaygın kullanılan format Belirleyicileri bknz;
+%H : Commit'in tam hash değeri.
+%h : Commit'in kısaltılmış hash değeri.
+%an : Commit'i yapan kişinin adı (Author Name).
+%ae : Commit'i yapan kişinin e-posta adresi (Author Email).
+%ad : Commit tarihi (Author Date).
+%s : Commit mesajı (Subject).
+%cn : Commit'i yapan kişinin adı (Committer Name).
+%ce : Commit'i yapan kişinin e-posta adresi (Committer Email).
+%cd : Commit tarihi (Commit Date).
+

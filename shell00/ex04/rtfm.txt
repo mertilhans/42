@@ -1,0 +1,34 @@
+"RTFM" bir kısaltmadır ve "Read The Fine Manual" (veya bazen daha kaba bir dille "Read The F***ing Manual") anlamına gelir. Bu ifade, bir kullanıcının belirli bir komut veya yazılım hakkında sorular sormadan önce mevcut belgeleri veya kullanım kılavuzlarını okumasını önerir. Bu kısaltma genellikle teknik topluluklarda, özellikle yazılım ve sistem yönetimi bağlamında kullanılır.
+
+Mac Terminal'de "RTFM" ifadesi genellikle şu şekilde uygulanır:
+
+Man Pages (Manuel Sayfalar)
+UNIX ve UNIX-benzeri işletim sistemlerinde (örneğin, macOS), her komutun ve birçok yapılandırma dosyasının kapsamlı bir belgeler dizisi vardır. Bu belgeler "man pages" (manuel sayfalar) olarak adlandırılır. Manuel sayfalara erişmek için man komutunu kullanabilirsiniz.
+
+Örnekler:
+Belirli bir komutun manuel sayfasını görüntüleme:
+
+bash
+Kodu kopyala
+man ls
+Bu komut, ls komutunun manuel sayfasını açar ve ls komutunun ne işe yaradığı, nasıl kullanıldığı ve hangi seçeneklerin mevcut olduğu hakkında bilgi sağlar.
+
+Bir komutun manuel sayfasını kapatma:
+Manuel sayfayı okuduktan sonra q tuşuna basarak manuel sayfadan çıkabilirsiniz.
+
+Manuel Sayfaları Kullanmanın Önemi
+Manuel sayfalar, birçok komutun detaylı açıklamalarını, kullanım örneklerini ve mevcut seçenekleri içerir. Bu nedenle, bir komutu kullanırken sorun yaşadığınızda veya daha fazla bilgiye ihtiyaç duyduğunuzda manuel sayfalar çok faydalıdır.
+
+Diğer Belgeler
+Mac terminalinde veya diğer UNIX-benzeri sistemlerde, info komutu da kullanılabilir:
+
+bash
+Kodu kopyala
+info ls
+Bu komut, ls komutunun info sayfasını açar, bu genellikle daha kapsamlı ve ayrıntılıdır.
+
+Özet
+"RTFM" ifadesi, kullanıcıların karşılaştıkları sorunları çözmek veya daha fazla bilgi edinmek için mevcut belgeleri ve kılavuzları okumalarını teşvik eder. Mac terminalinde bu belgeler genellikle man komutu ile erişilebilen manuel sayfalardır. Bu sayfalar, komutların ve sistem bileşenlerinin nasıl kullanılacağı hakkında kapsamlı bilgi sağlar.
+
+
+

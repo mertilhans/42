@@ -1,0 +1,15 @@
+1- Echo komutu kullanarak
+Echo "yazmak istediğiniz kelime" > dosya_adı.txt
+Burda dosya yoksa dosya oluşturur
+
+
+2- printf kullanarak yazmak
+Printf "yazmak istediğiniz kelime\n > dosya_adı.(uzantı)
+
+3-cat komutu kullanarak
+Cat > dosya_adı
+Yazmak istediğiniz kelime
+Control + D (CTRL +D)
+
+4- tee komutu kullanarak
+Echo "yazmak istediğiniz kelime" | tee dosya_adı.txt 

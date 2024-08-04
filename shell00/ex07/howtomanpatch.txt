@@ -1,0 +1,93 @@
+Burda iki dosya oluşturup onları karşılaştırmamız isteniyor
+Diff komutu iki dosya veya dizin arasındaki farkları karşılaştırır bu örnekte a ve b adlı iki dosya veya dizin karşılaştırılmaktadır
+
+Kullanım alanı : Dosyalardaki satır bazındaki farklılıkları belirlemek ve bu farkları standart çıktı(terminal üzerinde) göstermek için  kullanılır 
+
+
+Man patch içeriği
+
+Man patch;
+
+Patch komutunun kullanımına dair kapsamlı bilgi sağlayan bir manuel sayfası açar 'patch' komutu, bir dosyayı veya dosya grubunu bir 'diff' dosyasındaki değişikliklere göre güncellemek için kullanılır 'diff' komutu iki dosya arasındaki farkları içeren yama patch dosyası oluştururken 'patch' komutu bu yama dosyasını uygulayarak değişiklikleri orijinal dosyaya yansıtır.
+
+man patch İçeriği
+man patch komutu ile açılan manuel sayfa genellikle aşağıdaki başlıkları ve içerikleri kapsar:
+
+Name (İsim)
+
+css
+Kodu kopyala
+patch - Apply a diff file to an original
+Synopsis (Özet)
+
+css
+Kodu kopyala
+patch [options] [originalfile [patchfile]]
+Description (Açıklama)
+
+patch komutunun temel işlevi ve kullanımı hakkında genel bir açıklama sağlar.
+patch komutu, diff dosyasındaki değişiklikleri bir dosyaya veya dizine uygular.
+Options (Seçenekler)
+
+-pNUM : Yama dosyasındaki dosya yollarını NUM seviyesine kadar kırpar. Genellikle -p1 en yaygın kullanılan değerdir.
+-R : Ters yönde bir yama uygular. Yani, değişiklikleri geri alır.
+-i PATCHFILE : Yama dosyasını belirtir. Yama dosyasını standart girişten okumak yerine, belirli bir dosyadan okur.
+--dry-run : Gerçek bir değişiklik yapmadan yamanın uygulanabilirliğini test eder.
+-d DIRECTORY : Belirtilen dizine geçer ve yamayı burada uygular.
+-o OUTPUTFILE : Çıktıyı belirtilen dosyaya yönlendirir.
+-u : Birleşik (unified) formatta yama uygular (genellikle diff -u ile oluşturulan yamalar için).
+Examples (Örnekler)
+
+Bir yamayı uygulama:
+bash
+Kodu kopyala
+patch < patchfile.diff
+Belirli bir dosyaya yamayı uygulama:
+bash
+Kodu kopyala
+patch originalfile < patchfile.diff
+Yama dosyasını belirterek yamayı uygulama:
+bash
+Kodu kopyala
+patch -i patchfile.diff
+Files (Dosyalar)
+
+Genellikle bu başlık altında kullanılan veya oluşturulan dosya formatları ve dizinler hakkında bilgi bulunur.
+See Also (Ayrıca Bakınız)
+
+İlgili diğer komutlar ve dosyalar hakkında bilgi sağlar, örneğin:
+man
+Kodu kopyala
+diff(1), ed(1), diff3(1)
+Bugs (Hatalar)
+
+Bilinen hatalar ve sınırlamalar hakkında bilgi sağlar.
+Authors (Yazarlar)
+
+Komutun veya manuel sayfanın yazarları hakkında bilgi verir.
+Örnek Kullanım
+Basit Yama Uygulama
+Bir patchfile.diff dosyasındaki değişiklikleri orijinal dosyaya uygulamak için:
+
+bash
+Kodu kopyala
+patch < patchfile.diff
+Belirli Bir Dosyaya Yama Uygulama
+Eğer patchfile.diff dosyasındaki değişiklikleri belirli bir dosyaya uygulamak isterseniz:
+
+bash
+Kodu kopyala
+patch originalfile < patchfile.diff
+Belirli Bir Dizinde Yama Uygulama
+Yamayı belirli bir dizinde uygulamak için:
+
+bash
+Kodu kopyala
+patch -d /path/to/directory < patchfile.diff
+Kuru Çalıştırma (Dry Run)
+Gerçekten uygulamadan önce yamanın ne yapacağını görmek için:
+
+bash
+Kodu kopyala
+patch --dry-run < patchfile.diff
+man patch komutunu çalıştırarak bu ve diğer birçok ayrıntıya erişebilir ve patch komutunun tüm özelliklerini öğrenebilirsiniz.

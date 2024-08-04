@@ -1,0 +1,51 @@
+1 -Testshell 00 adında bir dosya oluşturun
+Touch testshell00
+
+2- Dosyanın izinlerini ayarlayın
+İstenen -r --r-xr-x 
+Ayarlamak için chmod kullanıcaz;
+Chmod 541 testShell00 
+Chmod izinler (okaltan) ve sembolik notasyonlarla belirlenir
+Oktay notasyon ;
+4 = reading 'r'
+2 = writing 'w'
+1 = execute 'x'
+Bu izinlerle kombinasyonlar oluşturabilirsiniz:
+7 = reading + writing + execute 'rwx'
+6 = reading + writing = 'rw-'
+5 = reading + execute = 'r-x'
+4 = only reading = 'r--'
+3 = writing + execute = '-wx'
+2 = only writing = '-w-'
+1 = only execute = '--x'
+0 = nothing '---'
+
+Ve 3 ana kateogiye ayrılır;
+
+1 Owner;
+2 group;
+3 others;
+
+Sembolik olur ayarlamak ister isek;
+Chmod u=rwx,g=x,o=rx test00 örnek
+
+3- Dosyanın tarihini ve Saatini ayarlamak 
+Touch -t 202306012342 testShell00 // ilk yıl sonra ay sonra gün sonra saat şeklinde 
+
+4- Dosyanın boyutunu ayarlamak 
+Belirli bir değerde ayarlamak zor olabilir içine 1 bytelık 40 işlem yapabiliriz ama onun yerine truncate kullanıyoruz
+Truncate -s 40 testShell00 burdaki -s dosyanın boyutu belirlemek için kullanılır
+
+
+5 - Dosyayı arşivle 
+
+Tara dönüştürmemiz isteniyor o yüzden 
+Tar -cf testShell00.tar testShel00 
+Burada -cf Create ve file anlamına geliyor 
+
+6 - sonuçları kontrol et
+Ls -l komutu ile yapıcaz buradaki -l long format yani ayrıntılı bir şekilde dosyanın detaylarını görücez
+
+
+En son dosyayı kontrol etmek ve tardan çıkarmak için
+Tar -xf testshell00.tar yazıyoruz 

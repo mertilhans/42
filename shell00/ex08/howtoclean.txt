@@ -1,0 +1,56 @@
+find . -type f \( -name '*~' -o -name '#*#' \) -print -delete
+Nedir ne işe yarar teker teker sıralayalım ;
+
+Find . = bu komut dosya sisteminde dosya ve dizinleri aramak için kullanılır '-' işareti.mevcut dizini ve alt dizinlerini ifade eder.
+
+Örnek:Mevcut dizinden başlayarak arama yapar.
+
+-type f = Yalnızca dosyaları (f ile belirtilen) arar.Dizinler ,sembolik bağlantılar gibi diğer dosya türleri göz ardı edilir
+
+/(-name '*-' -o -name '#*#' /)' = bu birden fazla adı belirli bir desenle eşleşen dosyaları bulmak için kullanılan bir mantıksal operatördür
+
+-name '*~' = Adı '*~' ile biten dosyaları arar örneğin file.txt~
+
+-o veya or operatörüdür,birden fazla arama kriteri arasında mantıksal Or işlemi gerçekleştirir.
+-name #*# : Adı #*# desenine uyan dosyaları arar örneğin #file#
+
+Printf = bulunan dosyaların adlarını ekrana yazdırır - bulunan dosyaların listesini terminale basar
+
+Delete = bulunan dosyaları siler bu seçenek find komutuyla bulunan her dosyayı kalıcı olarak siler 
+
+
+Komutun Tam Anlamı
+Bu komut, mevcut dizinde (.) ve tüm alt dizinlerinde:
+
+Adı *~ ile biten dosyaları veya
+Adı #*# desenine uyan dosyaları
+bulur ve bunları terminalde yazdırır (-print) ve ardından bu dosyaları siler (-delete).
+Örnek Senaryo
+Diyelim ki bir dizinde şu dosyalar var:
+
+shell
+Kodu kopyala
+file1.txt
+file2.txt~
+#file3#
+file4~
+normalfile
+Komutu çalıştırdığınızda:
+
+bash
+Kodu kopyala
+find . -type f \( -name '*~' -o -name '#*#' \) -print -delete
+Terminalde şu çıktı görünebilir:
+
+bash
+Kodu kopyala
+./file2.txt~
+./#file3#
+./file4~
+Bu çıktı, file2.txt~, #file3#, ve file4~ dosyalarının bulunduğunu ve ardından silindiğini gösterir. Bu dosyalar artık dizinde bulunmaz.
+
+Kullanım Alanları
+Geçici Dosyaları Temizleme: Metin editörleri veya bazı uygulamalar, geçici dosyalar oluşturabilir. Bu dosyaları düzenli olarak temizlemek için kullanılabilir.
+Yedek Dosyaları Silme: Birçok metin editörü, yedekleme dosyalarını *~ veya #*# biçiminde adlandırır. Bu komut, bu tür yedek dosyaları temizlemek için kullanışlıdır.
+Düzenli Bakım: Dosya sisteminin temiz ve düzenli tutulmasına yardımcı olur.
+Bu komut, belirli bir desenle eşleşen gereksiz veya geçici dosyaları temizlemek için oldukça etkili bir yöntemdir.

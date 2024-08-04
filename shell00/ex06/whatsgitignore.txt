@@ -1,0 +1,25 @@
+git ls-files --others --ignored --exclude-standard komutu Git deposunda izlenmeyen ve ihmal edilen dosyaları listelemek için kullanılır.Bu komutun her bir bileşenini ve ne yaptığını ayrıntılı olarak inceleyelim 
+
+1- Git ls-files
+Bu komut çalışma dizininde git tarafından izlenene dosyaların listesini gösterir.Bu komut,genellikle dosyaların durumunu kontrol etmek ve Git'in hangi dosyaları izlediğini görmek için kullanılır
+
+
+2- others veya -o 
+Bu seçenek git tarafından izlenmeyen dosyaları listeler henüz git Add almamış dosyalardır 
+
+3 - ignored veya -i 
+Bu seçenek .gitignore dosyasında belirtilen kurallara göre ihmal edilen dosyaları listeler ihmal edilen dosyalar genellikle geçici dosyalar derleme çıktıları veya hassas bilgiler gibi izlenmemesi gereken dosyalardır 
+
+
+4 --exclude standard
+
+Bu seçenek git in varsayılan ihmal kurallarını kullanarak ihmal edilen dosyaları hariç tutar bu,hem '.gitignore' dosyasındaki kuralları hem de git'in dahili ihmal kurallarını örneğin global .gitignore dosyası dikkate alınır
+
+Genel olarak kullanılan ihmal kuralları ve '.gitignore' dosyasındaki özel kurallar
+
+
+Komutun Kullanım Amacı:
+Bu komut, bir Git deposunda izlenmeyen veya ihmal edilen dosyaları hızlıca tespit etmek için kullanılır. Özellikle, hangi dosyaların Git tarafından izlenmediğini veya hangi dosyaların .gitignore kurallarına göre ihmal edildiğini görmek istediğinizde faydalıdır.
+
+Örnek Senaryo:
+Çalışma dizininizde birkaç dosya oluşturduğunuzu ve .gitignore dosyanızda bazı dosyaları ihmal ettiğinizi varsayalım. Bu komutu çalıştırarak, hangi dosyaların Git tarafından izlenmediğini ve hangi dosyaların .gitignore kurallarına göre ihmal edildiğini görebilirsiniz.

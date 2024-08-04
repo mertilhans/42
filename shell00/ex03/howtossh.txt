@@ -1,0 +1,49 @@
+Terminale git
+Cd ~\.ssh yaz 
+
+
+Sonra ls -la  yazalım 
+Bu komut .ssh dizinindeki dosyaları listeleyecektir genellikle id_rsa(özel anahtar)
+id_rsa.pub (genel anahtar) gibi dosyaları göreceksiniz
+
+-YENİ SSH anahtarı oluşturma 
+Ssh-keygen -t rsa -b 4096 -C "youremail.com"
+
+
+Genel anahtarı kopyalama 
+Cat ~/.ssh/id_rsa.pub 
+Command c ile kopyala ve yapıştır 
+(~) tilde Kullanıcının ana dizinini temsil eder 
+(*) asterisk Joker karakterdir ve herhangi bir karakter dizisini temsil eder tüm dosyaları listelemek için 
+(.) dot geçerli dizini temsil eder ve çalıştırmak için 
+
+Public Key (Genel Anahtar)
+Açıklama: Public key, herkesin erişimine açık olan bir anahtardır. Herhangi bir kullanıcıya veya sisteme dağıtılabilir ve genellikle veri şifreleme ve kimlik doğrulama amacıyla kullanılır.
+Kullanım Alanları:
+Şifreleme: Verilerin şifrelenmesi için kullanılır. Bir kullanıcı, genel anahtarınızı kullanarak size gönderilecek veriyi şifreler ve sadece sizin özel anahtarınızla bu veriyi çözebilirsiniz.
+Dijital İmzalar: Kimlik doğrulama amacıyla kullanılır. Örneğin, bir belgenin dijital imzasını doğrulamak için imzalayanın genel anahtarı kullanılır.
+Güvenlik: Public key'i paylaşmanın güvenlik açısından bir riski yoktur çünkü sadece veri şifreleme ve doğrulama için kullanılır.
+Private Key (Özel Anahtar)
+Açıklama: Private key, yalnızca sahibi tarafından bilinmesi gereken gizli bir anahtardır. Bu anahtar, genel anahtarla şifrelenmiş veriyi çözmek veya dijital bir imza oluşturmak için kullanılır.
+Kullanım Alanları:
+Şifre Çözme: Public key ile şifrelenmiş veriyi çözmek için kullanılır. Bu, sadece özel anahtara sahip kişinin bu veriyi okuyabileceği anlamına gelir.
+Dijital İmzalar: Verilerin bütünlüğünü ve kaynağını doğrulamak için kullanılır. Özel anahtarla oluşturulan dijital imza, genel anahtar ile doğrulanabilir.
+Güvenlik: Private key'in gizli kalması çok önemlidir. Eğer özel anahtar ele geçirilirse, şifrelenmiş verilere ve imzalara erişilebilir.
+Özetle:
+Genel Anahtar (Public Key):
+Herkese açık.
+Şifreleme ve kimlik doğrulama için kullanılır.
+Paylaşılması güvenli.
+Özel Anahtar (Private Key):
+Gizli tutulur.
+Şifre çözme ve dijital imzalar oluşturmak için kullanılır.
+Gizliliği çok önemlidir; ele geçirilmesi büyük bir güvenlik riski oluşturur.
+Örnek Kullanım Durumları:
+Şifreleme:
+Alice, Bob’a gizli bir mesaj göndermek ister. Bob’un genel anahtarı ile mesajı şifreler. Bob, özel anahtarı ile bu mesajı çözer.
+Dijital İmzalar:
+Bob, bir belgeyi dijital olarak imzalar. Bu imzayı doğrulamak isteyen herkes, Bob’un genel anahtarını kullanarak imzanın geçerliliğini doğrulayabilir.
+Asimetrik Şifreleme Yöntemleri:
+RSA (Rivest-Shamir-Adleman)
+DSA (Digital Signature Algorithm)
+Elliptic Curve Cryptography (ECC)
