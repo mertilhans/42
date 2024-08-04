@@ -1,0 +1,56 @@
+Komutun Bileşenleri ve Açıklamaları:
+find .
+
+Açıklama: find komutu, dosya sisteminde dosya ve dizinleri aramak için kullanılır. . işareti, mevcut dizini ve tüm alt dizinlerini ifade eder.
+Örnek: Mevcut dizinden başlayarak arama yapar.
+-type f
+
+Açıklama: Yalnızca dosyaları (f ile belirtilen) arar. Dizinler, sembolik bağlantılar gibi diğer dosya türleri göz ardı edilir.
+Örnek: Sadece dosyaları hedefler.
+-name "*.sh"
+
+Açıklama: Adı *.sh ile biten dosyaları arar. Bu, tüm .sh uzantılı dosyaları bulmak için kullanılır.
+Örnek: script.sh, example.sh gibi dosyalar.
+-exec
+
+Açıklama: Bulunan her dosya için belirtilen komutu çalıştırır. -exec seçeneğinden sonra gelen komut, her bir bulunan dosya için ayrı ayrı çalıştırılır.
+Örnek: -exec komutu, her bir bulunan dosya üzerinde işlem yapmak için kullanılır.
+basename {} .sh
+
+Açıklama: basename komutu, bir dosya yolunun son kısmını (dosya adını) ve istenirse dosya uzantısını kaldırarak döner. {} işareti, find komutuyla bulunan her bir dosyanın adını temsil eder.
+basename {}: Dosya yolundan dosya adını çıkartır.
+.sh: Dosya adından .sh uzantısını kaldırır.
+Örnek: basename /path/to/script.sh .sh komutu, script çıktısını verir.
+\;
+
+Açıklama: -exec komutunun bitişini belirtir. Her bir bulunan dosya için basename komutunun çalıştırılacağını belirtir.
+Örnek: -exec komutunun sonunda kullanılır.
+Komutun Tam Anlamı
+Bu komut, mevcut dizinde (.) ve tüm alt dizinlerinde:
+
+Adı *.sh ile biten dosyaları (-type f -name "*.sh") bulur.
+Bulunan her dosya için (-exec), basename komutunu çalıştırarak dosya adının sadece temel ismini (uzantısız) (basename {} .sh) elde eder.
+Elde edilen temel ismi (basename komutunun çıktısı) ekrana yazdırır.
+Örnek Senaryo
+Diyelim ki dizininizde şu dosyalar var:
+
+bash
+Kodu kopyala
+script1.sh
+script2.sh
+dir1/script3.sh
+dir2/script4.sh
+Komutu çalıştırdığınızda:
+
+bash
+Kodu kopyala
+find . -type f -name "*.sh" -exec basename {} .sh \;
+Şu çıktıyı elde edersiniz:
+
+Kodu kopyala
+script1
+script2
+script3
+script4
+Özet:
+Bu komut, mevcut dizinde ve alt dizinlerde .sh uzantılı tüm dosyaları bulur ve her dosya için uzantısız dosya adını ekrana yazdırır. Bu, özellikle belirli bir uzantıya sahip dosyaların isimlerini toplu olarak elde etmek istediğinizde kullanışlıdır.

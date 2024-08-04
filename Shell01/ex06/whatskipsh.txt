@@ -1,0 +1,54 @@
+Kodun Bileşenleri ve Açıklamaları:
+#!/bin/bash
+
+Açıklama: Bu satır, betiğin bir bash betiği olduğunu belirtir ve betiğin /bin/bash kabuğuyla çalıştırılmasını sağlar. Bu, betiğin hangi yorumlayıcı ile çalıştırılacağını belirten bir shebang (hashbang) olarak bilinir.
+ls -l
+
+Açıklama: ls komutu, dizindeki dosyaların ve dizinlerin listesini verir. -l seçeneği, detaylı listeleme biçimini kullanır ve her dosya veya dizin hakkında izinler, sahip, grup, boyut ve oluşturulma tarihi gibi ek bilgiler sağlar.
+Örnek Çıktı:
+
+Kodu kopyala
+-rw-r--r-- 1 user group  1234 Aug  4 12:34 file1.txt
+-rw-r--r-- 1 user group  5678 Aug  4 12:35 file2.txt
+drwxr-xr-x 2 user group  4096 Aug  4 12:36 dir1
+| (Pipe)
+
+Açıklama: Pipe operatörü, bir komutun çıktısını başka bir komutun girdisi olarak kullanır. Bu, komutların çıktısını zincirleme işlem yapmayı sağlar.
+Örnek: ls -l komutunun çıktısını awk komutuna yönlendirir.
+awk 'NR%2==1'
+
+Açıklama: awk komutu, metin işleme ve desen eşleştirme için kullanılan güçlü bir programlama dilidir. Bu komut, ls -l komutunun çıktısından belirli satırları seçer.
+NR: awk içinde satır numarasını ifade eder. NR, işlenen mevcut satırın numarasını gösterir.
+%2: Modülüs operatörüdür. Bir sayının 2'ye bölümünden kalanı verir.
+NR%2==1: Bu ifade, satır numarasının 2'ye bölündüğünde kalanın 1 olup olmadığını kontrol eder. Yani, tek numaralı satırları seçer.
+Örnek: ls -l komutunun çıktısında yalnızca 1, 3, 5, vb. satırlar seçilir ve yazdırılır.
+Kodun Tam Anlamı
+Bu kod, mevcut dizindeki dosyaların ve dizinlerin detaylı listesini almak için ls -l komutunu çalıştırır ve bu listeyi awk komutuna yönlendirir. awk komutu, her satırın satır numarasına bakarak sadece tek numaralı satırları (NR%2==1) seçer ve ekrana yazdırır.
+
+Örnek Senaryo
+Diyelim ki mevcut dizinde şu dosyalar var:
+
+Kodu kopyala
+file1.txt
+file2.txt
+dir1
+ls -l komutunu çalıştırdığınızda:
+
+
+Kodu kopyala
+-rw-r--r-- 1 user group  1234 Aug  4 12:34 file1.txt
+-rw-r--r-- 1 user group  5678 Aug  4 12:35 file2.txt
+drwxr-xr-x 2 user group  4096 Aug  4 12:36 dir1
+Komutu çalıştırdığınızda:
+
+bash
+Kodu kopyala
+ls -l | awk 'NR%2==1'
+Şu çıktıyı elde edersiniz:
+
+
+Kodu kopyala
+-rw-r--r-- 1 user group  1234 Aug  4 12:34 file1.txt
+drwxr-xr-x 2 user group  4096 Aug  4 12:36 dir1
+Özet:
+Bu bash betiği, mevcut dizindeki dosyaların ve dizinlerin detaylı listesini alır ve bu listeden sadece tek numaralı satırları (ilk, üçüncü, beşinci, vb.) ekrana yazdırır. Bu, belirli bir düzenlemeyi veya incelemeyi kolaylaştırmak için kullanışlı olabilir.

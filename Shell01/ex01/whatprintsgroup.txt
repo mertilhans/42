@@ -1,0 +1,53 @@
+Bu bash betiği, belirtilen kullanıcının (bu örnekte $FT_USER değişkeni ile belirtilen kullanıcı) gruplarını alır ve bu grupları virgülle ayırarak tek bir satırda yazdırır. Kodu ve her adımın ne yaptığını detaylıca inceleyelim:
+
+Kod:
+bash
+Kodu kopyala
+#!/bin/bash
+id -Gn $FT_USER | tr ' ' ',' | tr -d "\n"
+Açıklama:
+#!/bin/bash
+
+Açıklama: Bu satır, betiğin bir bash betiği olduğunu belirtir ve betiğin /bin/bash kabuğuyla çalıştırılmasını sağlar. Bu shebang (hashbang) olarak bilinir.
+id -Gn $FT_USER
+
+Açıklama: id komutu, kullanıcı hakkında bilgi verir.
+-G: Kullanıcının üyesi olduğu tüm grup ID'lerini listeler.
+-n: Grup ID'lerini isim olarak yazdırır.
+$FT_USER: Kullanıcı adı. Bu değişken, betik çalıştırılmadan önce tanımlanmış olmalıdır.
+Örnek Çıktı: Kullanıcının grupları aralarında boşluklarla ayrılmış olarak listelenir, örneğin: group1 group2 group3.
+| (Pipe)
+
+Açıklama: Pipe operatörü, bir komutun çıktısını başka bir komutun girdisi olarak kullanır. Bu, komutların çıktısını zincirleme işlem yapmayı sağlar.
+Örnek: id -Gn $FT_USER komutunun çıktısını tr komutuna yönlendirir.
+tr ' ' ','
+
+Açıklama: tr komutu, karakter çevirme veya silme işlemleri yapar.
+' ', yani boşluk karakteri: Bu, değiştirilmesi gereken karakterdir.
+',', yani virgül: Bu, boşluk karakterinin yerine geçecek karakterdir.
+Örnek: group1 group2 group3 çıktısını group1,group2,group3 olarak değiştirir.
+| tr -d "\n"
+
+Açıklama: tr -d komutu, belirtilen karakterleri siler.
+"\n": Yeni satır karakteri. Bu, satır sonu karakterini ifade eder.
+Örnek: Çıktının sonunda herhangi bir yeni satır karakteri varsa, bunu siler, böylece sonuç tek bir satırda olur.
+Örnek Kullanım ve Çıktı
+Varsayalım $FT_USER değişkeni johndoe kullanıcısına atanmış ve johndoe kullanıcısı şu gruplara ait: staff, admin, users.
+
+Betiği çalıştırmadan önce $FT_USER değişkenini ayarlayalım:
+
+bash
+Kodu kopyala
+export FT_USER=johndoe
+Betiği çalıştırdığınızda:
+
+bash
+Kodu kopyala
+id -Gn $FT_USER | tr ' ' ',' | tr -d "\n"
+Komut sırasıyla şu çıktıları üretir:
+
+id -Gn johndoe komutu, staff admin users çıktısını verir.
+tr ' ' ',' komutu, staff,admin,users çıktısını verir.
+tr -d "\n" komutu, sonundaki yeni satır karakterini siler, böylece çıktı sadece staff,admin,users olur.
+Özet:
+Bu bash betiği, belirtilen kullanıcının üyesi olduğu grupları alır ve bu grupları virgülle ayırarak tek bir satırda yazdırır. Bu, özellikle kullanıcı grup bilgilerini daha okunabilir ve işlenebilir bir formatta elde etmek için kullanışlıdır.

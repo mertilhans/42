@@ -1,0 +1,98 @@
+Komutun Bileşenleri ve Açıklamaları:
+ifconfig
+
+Açıklama: ifconfig komutu, ağ arayüzlerini yapılandırmak ve ağ arayüzleri hakkında bilgi almak için kullanılır. Bu komut, ağ arayüzlerinin mevcut durumunu, IP adreslerini, MAC adreslerini ve diğer ilgili bilgileri listeler.
+Örnek Çıktı:
+plaintext
+Kodu kopyala
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=400<CHANNEL_IO>
+	ether a8:20:66:55:12:34 
+	inet 192.168.1.2 netmask 0xffffff00 broadcast 192.168.1.255
+	inet6 fe80::a00:27ff:fe55:1234%en0 prefixlen 64 secured scopeid 0x4
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+| (Pipe)
+
+Açıklama: Pipe operatörü, bir komutun çıktısını başka bir komutun girdisi olarak kullanır. Bu, komutların çıktısını zincirleme işlem yapmayı sağlar.
+Örnek: ifconfig komutunun çıktısını awk komutuna yönlendirir.
+awk '/ether/{print $2}'
+
+Açıklama: awk komutu, metin işleme ve desen eşleştirme için kullanılan güçlü bir programlama dilidir. Bu komut, ifconfig çıktısından belirli desenlere uyan satırları bulur ve bu satırlardan belirli alanları yazdırır.
+/ether/: Bu desen arama ifadesi, ether kelimesini içeren satırları bulur. ifconfig çıktısında ether kelimesi, MAC adreslerini belirten satırlarda yer alır.
+{print $2}: Bu eylem, desenle eşleşen her satırın ikinci alanını ($2) yazdırır. awk varsayılan olarak alanları boşluk veya tab ile ayırır.
+Örnek:
+Girdi: ether a8:20:66:55:12:34
+Çıktı: a8:20:66:55:12:34
+Komutun Tam Anlamı
+Bu komut, ağ arayüzlerinin bilgilerini almak için ifconfig komutunu çalıştırır ve ardından awk komutunu kullanarak ether kelimesini içeren satırları bulur ve bu satırlardaki MAC adreslerini (ikinci alan) yazdırır.
+
+Örnek Senaryo
+Diyelim ki ifconfig komutunun çıktısı şu şekilde olsun:
+
+plaintext
+Kodu kopyala
+en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=400<CHANNEL_IO>
+	ether a8:20:66:55:12:34 
+	inet 192.168.1.2 netmask 0xffffff00 broadcast 192.168.1.255
+	inet6 fe80::a00:27ff:fe55:1234%en0 prefixlen 64 secured scopeid 0x4
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+en1: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500
+	options=400<CHANNEL_IO>
+	ether b8:27:eb:45:23:56 
+	inet 192.168.1.3 netmask 0xffffff00 broadcast 192.168.1.255
+	inet6 fe80::b00:27ff:fe45:2356%en1 prefixlen 64 secured scopeid 0x5
+	nd6 options=201<PERFORMNUD,DAD>
+	media: autoselect
+	status: active
+Komutu çalıştırdığınızda:
+
+bash
+Kodu kopyala
+ifconfig | awk '/ether/{print $2}'
+Şu çıktıyı elde edersiniz:
+
+makefile
+Kodu kopyala
+a8:20:66:55:12:34
+b8:27:eb:45:23:56
+Özet:
+Bu komut, ifconfig komutunun çıktısından Ethernet (MAC) adreslerini alır ve bu adresleri ekrana yazdırır. Bu, ağ arayüzlerinin MAC adreslerini hızlıca elde etmek için kullanışlıdır.
+
+
+
+MAC ADRESİ NEDİR ? 
+
+
+MAC adresi (Media Access Control adresi), ağ cihazlarına özgü bir tanımlayıcıdır. Ağ üzerinde her cihazın benzersiz bir şekilde tanımlanmasını sağlar. MAC adresleri, genellikle ağ kartlarında bulunan donanımsal adreslerdir ve veri iletiminde cihazların birbirini tanımasını sağlar.
+
+MAC Adresinin Özellikleri:
+Benzersizlik: Her MAC adresi, belirli bir üreticiye ait ağ cihazına özgüdür. Bu adresler, genellikle cihazın üretim sürecinde atanır ve her cihazda benzersiz olmalıdır.
+
+Format: MAC adresleri, 48 bit uzunluğundadır ve genellikle 6 grup 2'şer haneli onaltılık (hexadecimal) rakam olarak yazılır. Örneğin:
+
+00:1A:2B:3C:4D:5E
+00-1A-2B-3C-4D-5E
+001A.2B3C.4D5E
+Katman: MAC adresleri, OSI modelinin veri bağlama katmanında (Layer 2) kullanılır. Bu katman, fiziksel adresleme ve ağ üzerinde veri çerçevelerinin doğru cihazlara iletilmesini sağlar.
+
+Statik ve Dinamik: MAC adresleri genellikle statik (değişmeyen) adreslerdir, yani ağ kartının üretimi sırasında belirlenir ve cihazın ömrü boyunca değişmez. Ancak bazı durumlarda, yazılım veya donanım ayarları aracılığıyla MAC adresleri değiştirilebilir.
+
+MAC Adresinin Kullanım Alanları:
+Ağ Tanımlama: Cihazlar, ağ üzerinde diğer cihazlarla iletişim kurarken MAC adreslerini kullanarak kendilerini tanımlar. Bu, veri paketlerinin doğru hedefe yönlendirilmesini sağlar.
+
+Ağ Yönetimi: Ağ yöneticileri, cihazları MAC adreslerine göre yönetebilir ve izleyebilir. Örneğin, bir ağa bağlanan cihazların MAC adreslerini takip ederek ağ güvenliğini sağlamak veya ağ kullanımını izlemek mümkün olabilir.
+
+Güvenlik: MAC adresleri, ağ güvenliğinde çeşitli rol oynar. Örneğin, bazı ağ erişim kontrol listeleri (ACL) ve güvenlik duvarları, belirli MAC adreslerine sahip cihazlara erişim izni verebilir veya kısıtlayabilir.
+
+İzleme ve Sorun Giderme: Ağda sorun yaşandığında veya cihazların performansını izlerken, MAC adresleri kullanılarak hangi cihazın hangi ağ etkinliklerini gerçekleştirdiği takip edilebilir.
+
+Örnek:
+Bir bilgisayarın ağ kartına bağlı olan MAC adresi, genellikle ağ bağlantıları ayarlarında veya ağ kartı özelliklerinde bulunabilir. Örneğin, bir Linux sisteminde ifconfig veya ip addr komutları ile, Windows sisteminde ise "Ağ Bağlantıları" bölümünden MAC adresine ulaşabilirsiniz.
+
+Özet:
+MAC adresi, ağ üzerindeki her cihazı benzersiz bir şekilde tanımlayan 48 bit uzunluğunda bir adres olup, ağ veri iletiminde cihazların tanımlanmasını ve iletişim kurmasını sağlar.
