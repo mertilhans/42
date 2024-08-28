@@ -6,7 +6,7 @@
 /*   By: merilhan <merilhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/27 16:49:53 by merilhan          #+#    #+#             */
-/*   Updated: 2024/08/27 16:51:05 by merilhan         ###   ########.fr       */
+/*   Updated: 2024/08/28 12:23:27 by merilhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,56 +17,64 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '\0')
+		ft_putchar(str[i++]);
+}
+
 int	ft_strcmp(char *s1, char *s2)
 {
-	while (*s1 && *s1 == *s2)
-	{
-		s1++;
-		s2++;
-	}
-	return (*s1 - *s2);
-}
+	int	i;
 
-void	ft_strswap(char **a, char **b)
-{
-	char	*c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
-}
-
-void	ft_sort_str_tab(char **tab, int size)
-{
-	char	*pivot;
-	int		i;
-	int		j;
-
-	if (size < 2)
-		return ;
-	pivot = tab[--size];
 	i = 0;
-	j = -1;
-	while (++j < size)
-		if (ft_strcmp(tab[j], pivot) < 0)
-			ft_strswap(&tab[i++], &tab[j]);
-	if (ft_strcmp(tab[i], tab[size]) > 0)
-		ft_strswap(&tab[i], &tab[size]);
-	ft_sort_str_tab(tab, i);
-	ft_sort_str_tab(tab + i + 1, size - i);
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] == s2[i])
+			i++;
+		if (s1[i] < s2[i] || s1[i] > s2[i])
+			return (s1[i] - s2[i]);
+	}
+	return (0);
+}
+
+void	ft_swap(char **a, char **b)
+{
+	char	*tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
 int	main(int argc, char **argv)
 {
-	int	i;
+	int	j;
+	int	x;
 
-	ft_sort_str_tab(argv + 1, argc - 1);
-	i = 0;
-	while (++i < argc)
+	x = 1;
+	while (x < argc - 1)
 	{
-		while (*argv[i])
-			ft_putchar(*argv[i]++);
+		j = 1;
+		while (j < argc - 1)
+		{
+			if (ft_strcmp(argv[j], argv[j + 1]) > 0)
+			{
+				ft_swap(&argv[j], &argv[j + 1]);
+			}
+			j++;
+		}
+		x++;
+	}
+	j = 1;
+	while (j < argc)
+	{
+		ft_putstr(argv[j]);
 		ft_putchar('\n');
+		j++;
 	}
 	return (0);
 }
