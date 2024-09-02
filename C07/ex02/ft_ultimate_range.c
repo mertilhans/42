@@ -6,7 +6,7 @@
 /*   By: merilhan <merilhan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/01 14:18:11 by merilhan          #+#    #+#             */
-/*   Updated: 2024/09/01 14:18:12 by merilhan         ###   ########.fr       */
+/*   Updated: 2024/09/02 15:27:00 by merilhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_ultimate_range(int **range, int min, int max)
 {
-	int i;
+	int	i;
 
 	if (min >= max)
 	{
